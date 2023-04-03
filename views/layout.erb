@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Kuartzy Bot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+      import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
+      window.Stimulus = Application.start()
+
+      Stimulus.register("chat-textarea", class extends Controller {
+        static targets = [ "input", "textarea", "userForm", "assistantForm"]
+
+        submit(event) {
+          event.preventDefault();
+          this.inputTarget.value = this.textareaTarget.innerText;
+          this.textareaTarget.innerText = "";
+          this.userFormTarget.requestSubmit();
+        }
+
+        requestAssistantMessage(event) {
+          const usertFormSubmited = event.detail.formSubmission.formElement === this.userFormTarget;
+          const successfulSubmit = event.detail.formSubmission.result.success;
+          if (usertFormSubmited && successfulSubmit) {
+            this.assistantFormTarget.requestSubmit();
+          }
+        }
+      })
+    </script>
+    <script type="module">
+      import * as Turbo from "https://cdn.skypack.dev/@hotwired/turbo";
+    </script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <div class="mt-16 mx-auto max-w-5xl sm:px-6 lg:px-8">
+      <%= yield %>
+    </div>
+  </body>
+</html>

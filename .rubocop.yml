@@ -1,0 +1,35 @@
+require: rubocop-rake
+
+AllCops:
+  NewCops: enable
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space
+
+Metrics/AbcSize:
+  CountRepeatedAttributes: false
+Metrics/BlockLength:
+  AllowedMethods: ['describe', 'context']
+  CountAsOne: ['array', 'hash', 'heredoc']
+Metrics/ClassLength:
+  CountAsOne: ['array', 'hash', 'heredoc']
+Metrics/MethodLength:
+  CountAsOne: ['array', 'hash', 'heredoc']
+Metrics/ModuleLength:
+  CountAsOne: ['array', 'hash', 'heredoc']
+
+Style/Documentation:
+  Enabled: false
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/SymbolArray:
+  Enabled: false

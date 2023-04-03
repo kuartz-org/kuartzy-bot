@@ -1,0 +1,9 @@
+<ul>
+  <% @conversations.each do |conversation| %>
+    <li><a href="conversations/<%= conversation.id%>"><%= conversation.id %></a></li>
+  <% end %>
+</ul>
+
+<form action="/conversations" method="post">
+  <input type="submit" value="Nouvelle conversation">
+</form>

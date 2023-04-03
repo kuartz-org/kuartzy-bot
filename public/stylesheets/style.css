@@ -1,0 +1,58 @@
+/* GitHub Dark Theme */
+
+/* Background and text colors */
+*:not(pre) code {
+  background-color: #1f1f1f;
+  color: #c9d1d9;
+  padding: .1rem .2rem;
+}
+
+pre:has(code) {
+  background-color: #1f1f1f;
+  color: #c9d1d9;
+  padding: .5rem;
+  border-radius: .25rem;
+}
+
+/* Keyword colors */
+.k { color: #d73a49; } /* Keywords */
+.kc { color: #005cc5; } /* Constants */
+.kd { color: #6f42c1; } /* Declarations */
+.kn { color: #6f42c1; } /* Namespaces */
+.kp { color: #d73a49; } /* Pseudo-keywords */
+.kr { color: #d73a49; } /* Reserved keywords */
+.kt { color: #22863a; } /* Type keywords */
+
+/* Literal colors */
+.l { color: #005cc5; } /* Literals */
+.ld { color: #6f42c1; } /* Date literals */
+
+/* Name colors */
+.n { color: #c9d1d9; } /* Identifiers */
+.na { color: #56b6c2; } /* Attributes */
+.nb { color: #005cc5; } /* Built-ins */
+.nc { color: #e36209; } /* Classes */
+.no { color: #005cc5; } /* Constants */
+.nd { color: #ffa500; } /* Decorators */
+.ni { color: #c9d1d9; } /* Entities */
+.ne { color: #d73a49; } /* Exceptions */
+.nf { color: #e36209; } /* Functions */
+.nl { color: #c9d1d9; } /* Labels */
+.nn { color: #e36209; } /* Namespaces */
+.nt { color: #22863a; } /* Tags */
+.nv { color: #c9d1d9; } /* Variables */
+
+/* Operator and punctuation colors */
+.o, .p { color: #c9d1d9; } /* Operators and punctuation */
+
+/* Comment colors */
+.c, .cm, .cp, .c1, .cs { color: #6a737d; } /* Comments */
+
+/* Error colors */
+.err { color: #dc3545; } /* Errors */
+
+/* Unknown or unrecognized token colors */
+.x { color: #c9d1d9; } /* Unknown or unrecognized tokens */
+
+/* Whitespace colors */
+.w { color: #c9d1d9; } /* Whitespace */

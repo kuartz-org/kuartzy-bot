@@ -1,0 +1,44 @@
+<section>
+  <ul role="list" class="divide-y divide-gray-200" id="messages">
+    <% @conversation.messages[1..].each do |message| %>
+      <li class="py-4" id="message_<%= message.id %>">
+        <section class="sm:flex mb-4">
+          <div class="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
+            <img src="/images/<%= message.role %>.png" alt="" class="h-12 w-12">
+          </div>
+          <div class="w-full">
+            <h4 class="text-lg font-bold"><%= message.role %></h4>
+            <div class="mt-1 text-lg">
+              <%= message.content_html %>
+            </div>
+          </div>
+        </section>
+      </li>
+    <% end %>
+  </ul>
+
+  <div data-controller="chat-textarea">
+    <form
+      action="/conversations/<%= @conversation.id %>/messages"
+      method="post"
+      class="ml-12 pl-4"
+      data-chat-textarea-target="userForm"
+      data-action="turbo:submit-end@document->chat-textarea#requestAssistantMessage"
+    >
+      <input type="hidden" name="content" data-chat-textarea-target="input">
+      <div
+        class="w-full min-h-[3rem] bg-gray-100 p-1 rounded before:content-['Message&hellip;'] before:p-1 before:text-gray-500 focus:before:content-['']"
+        contenteditable="true"
+        data-chat-textarea-target="textarea"
+        data-action="keydown.enter->chat-textarea#submit"
+      >
+      </div>
+    </form>
+    <form
+      action="/conversations/<%= @conversation.id %>/assistant_message"
+      method="post"
+      data-chat-textarea-target="assistantForm"
+    >
+    </form>
+  </div>
+</section>
