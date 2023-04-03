@@ -20,4 +20,4 @@ setup
 serve
 ```
 
-Kuartzy Bot is live on [localhost:9292](localhost:9292)!
+Kuartzy Bot is live on [localhost:9292](http://localhost:9292)
