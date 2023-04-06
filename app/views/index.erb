@@ -1,9 +1,11 @@
-<ul>
+<ul class="bg-gray-100">
   <% @conversations.each do |conversation| %>
-    <li><a href="conversations/<%= conversation.id%>"><%= conversation.id %></a></li>
+    <li>
+      <a href="conversations/<%= conversation.id%>">
+        <% if conversation.messages.count >= 2%>
+          <%= conversation.messages[1]&.content[0..50] %>
+        <% end %>
+      </a>
+    </li>
   <% end %>
 </ul>
-
-<form action="/conversations" method="post">
-  <input type="submit" value="Nouvelle conversation">
-</form>

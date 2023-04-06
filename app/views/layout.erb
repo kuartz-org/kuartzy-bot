@@ -34,9 +34,21 @@
     </script>
     <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
-  <body>
-    <div class="mt-16 mx-auto max-w-5xl sm:px-6 lg:px-8">
+  <body class="bg-white h-full overflow-hidden">
+    <header class="sticky top-0 w-full">
+      <nav class="h-10 flex justify-between items-center bg-gray-200 space-x-4">
+        <a class="bg-gray-800 text-white px-3 py-2" href="/">Home</a>
+        <form action="/conversations" method="post">
+          <input class="bg-green-600 text-white px-3 py-2 cursor-pointer" type="submit" value="Nouvelle conversation">
+        </form>
+      </nav>
+    </header>
+
+    <main
+      class="bg-gray-100 py-10 mx-auto max-w-5xl sm:px-6 lg:px-8 overflow-y-auto"
+      style="height: calc(100vh - <%=10 / 4 %>rem)"
+    >
       <%= yield %>
-    </div>
+    </main>
   </body>
 </html>
