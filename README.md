@@ -21,3 +21,11 @@ serve
 ```
 
 Kuartzy Bot is live on [localhost:9292](http://localhost:9292)
+
+## Dev mode
+
+Dev mode is usefull to watch css class change to auto-build `application.css` in live.
+
+```bash
+dev
+```

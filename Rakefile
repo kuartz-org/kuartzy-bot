@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "application"
+require_relative "db/config.rb"
 
 desc "setup application"
 task :setup do

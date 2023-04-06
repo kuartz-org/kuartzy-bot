@@ -1,0 +1,2 @@
+web: bundle exec puma
+css: npx tailwindcss -i ./src/application.css -o ./public/stylesheets/application.css --watch
