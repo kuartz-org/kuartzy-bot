@@ -21,13 +21,13 @@
     <form
       action="/conversations/<%= @conversation.id %>/messages"
       method="post"
-      class="ml-12 pl-4 my-3"
+      class="mt-3 mb-8 relative"
       data-chat-textarea-target="userForm"
       data-action="turbo:submit-end@document->chat-textarea#requestAssistantMessage"
     >
       <input type="hidden" name="content" data-chat-textarea-target="input">
       <div
-        class="w-full min-h-[3rem] bg-gray-200 dark:bg-slate-800 p-1 rounded before:content-['Message&hellip;'] before:p-1 before:text-gray-500 focus:before:content-['']"
+        class="pl-14 w-full min-h-[3rem] bg-gray-200 dark:bg-slate-800 p-1 rounded before:content-['Message…'] before:p-1 before:text-gray-500 focus:before:content-[''] focus:outline-none"
         contenteditable="true"
         data-chat-textarea-target="textarea"
         data-action="keydown.enter->chat-textarea#submit"

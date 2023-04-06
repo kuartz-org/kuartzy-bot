@@ -524,6 +524,10 @@ video {
   position: fixed;
 }
 
+.relative {
+  position: relative;
+}
+
 .sticky {
   position: sticky;
 }
@@ -565,6 +569,14 @@ video {
 
 .mt-1 {
   margin-top: 0.25rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
 }
 
 .flex {
@@ -609,6 +621,10 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .items-center {
@@ -701,6 +717,14 @@ video {
   padding-left: 1rem;
 }
 
+.pl-12 {
+  padding-left: 3rem;
+}
+
+.pl-14 {
+  padding-left: 3.5rem;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -713,6 +737,44 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.caret-white {
+  caret-color: #fff;
+}
+
+.caret-gray-500 {
+  caret-color: #6b7280;
+}
+
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.before\:absolute::before {
+  content: var(--tw-content);
+  position: absolute;
+}
+
+.before\:left-0::before {
+  content: var(--tw-content);
+  left: 0px;
+}
+
+.before\:top-0::before {
+  content: var(--tw-content);
+  top: 0px;
+}
+
+.before\:h-full::before {
+  content: var(--tw-content);
+  height: 100%;
+}
+
+.before\:w-full::before {
+  content: var(--tw-content);
+  width: 100%;
 }
 
 .before\:p-1::before {
@@ -731,9 +793,49 @@ video {
   content: var(--tw-content);
 }
 
+.before\:content-\[\'Message\'\]::before {
+  --tw-content: 'Message';
+  content: var(--tw-content);
+}
+
+.before\:content-\[\'Message\.\.\.\'\]::before {
+  --tw-content: 'Message...';
+  content: var(--tw-content);
+}
+
+.before\:content-\[\'Message\2026\'\]::before {
+  --tw-content: 'Message…';
+  content: var(--tw-content);
+}
+
+.focus\:border-white:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus\:ring-white:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(255 255 255 / var(--tw-ring-opacity));
+}
+
 .focus\:before\:content-\[\'\'\]:focus::before {
   --tw-content: '';
   content: var(--tw-content);
+}
+
+.focus-visible\:border-white:focus-visible {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.focus-visible\:ring-white:focus-visible {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(255 255 255 / var(--tw-ring-opacity));
 }
 
 @media (prefers-color-scheme: dark) {
