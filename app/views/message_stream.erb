@@ -1,14 +1,14 @@
 <turbo-stream action="append" target="messages">
   <template>
-    <li class="py-4" id="message_<%= message.id %>">
+    <li class="py-4" id="message_<%= @message.id %>">
       <div class="sm:flex mb-4">
         <div class="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
-          <img src="/images/<%= message.role %>.png" alt="" class="h-12 w-12">
+          <img src="/images/<%= @message.role %>.png" alt="" class="h-12 w-12">
         </div>
         <div class="w-full">
-          <h4 class="text-lg font-bold"><%= message.role %></h4>
+          <h4 class="text-lg font-bold"><%= @message.role %></h4>
           <div class="mt-1 text-lg">
-            <%= message.content_html %>
+            <%= @message.content_html %>
           </div>
         </div>
       </div>
