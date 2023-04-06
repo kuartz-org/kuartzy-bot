@@ -1,5 +1,5 @@
 <section>
-  <ul role="list" class="divide-y divide-gray-200 mb-6" id="messages">
+  <ul role="list" class="divide-y divide-gray-200 dark:divide-slate-800 mb-6" id="messages">
     <% @conversation.messages[1..].each do |message| %>
       <li class="py-4" id="message_<%= message.id %>">
         <div class="sm:flex mb-4">
@@ -17,7 +17,7 @@
     <% end %>
   </ul>
 
-  <div data-controller="chat-textarea" class="sm:px-6 lg:px-8 mx-auto max-w-5xl fixed inset-x-0 bottom-0 bg-gray-100">
+  <div data-controller="chat-textarea" class="sm:px-6 lg:px-8 mx-auto max-w-5xl fixed inset-x-0 bottom-0 bg-gray-100 dark:bg-slate-950">
     <form
       action="/conversations/<%= @conversation.id %>/messages"
       method="post"
@@ -27,7 +27,7 @@
     >
       <input type="hidden" name="content" data-chat-textarea-target="input">
       <div
-        class="w-full min-h-[3rem] bg-gray-200 p-1 rounded before:content-['Message&hellip;'] before:p-1 before:text-gray-500 focus:before:content-['']"
+        class="w-full min-h-[3rem] bg-gray-200 dark:bg-slate-800 p-1 rounded before:content-['Message&hellip;'] before:p-1 before:text-gray-500 focus:before:content-['']"
         contenteditable="true"
         data-chat-textarea-target="textarea"
         data-action="keydown.enter->chat-textarea#submit"
