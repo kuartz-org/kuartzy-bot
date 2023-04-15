@@ -1,25 +1,27 @@
-<ul role="list" class="mb-10 flex flex-col-reverse overflow-auto divide-y divide-gray-200 dark:divide-slate-800">
-  <% @conversations.reverse.each do |conversation| %>
-    <li class="relative bg-gray-100 dark:bg-slate-950 px-4 py-5 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-600 hover:bg-gray-50 dark:hover:bg-slate-800">
-      <div class="flex justify-between space-x-3">
-        <div class="min-w-0 flex-1">
-          <a href="conversations/<%= conversation.id%>" class="block focus:outline-none">
-            <span class="absolute inset-0" aria-hidden="true"></span>
-            <p class="truncate text-sm font-medium text-gray-900 dark:text-slate-100">&nbsp;</p>
-            <p class="truncate text-sm text-gray-500 dark:text-slate-400"><%= conversation.messages.count %> message<%= "s" if conversation.messages.count > 1 %></p>
-          </a>
+<main class="bg-gray-100 dark:bg-slate-950 mx-auto max-w-5xl h-full flex flex-col justify-end pb-10">
+  <ul role="list" class="mb-10 flex flex-col-reverse overflow-auto divide-y divide-gray-200 dark:divide-slate-800">
+    <% @conversations.reverse.each do |conversation| %>
+      <li class="relative bg-gray-100 dark:bg-slate-950 px-4 py-5 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-600 hover:bg-gray-50 dark:hover:bg-slate-800">
+        <div class="flex justify-between space-x-3">
+          <div class="min-w-0 flex-1">
+            <a href="conversations/<%= conversation.id%>" class="block focus:outline-none">
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              <p class="truncate text-sm font-medium text-gray-900 dark:text-slate-100">&nbsp;</p>
+              <p class="truncate text-sm text-gray-500 dark:text-slate-400"><%= conversation.messages.count %> message<%= "s" if conversation.messages.count > 1 %></p>
+            </a>
+          </div>
+          <time datetime="conversation.created_at" class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500 dark:text-slate-400">
+            <%= conversation.created_at %>
+          </time>
         </div>
-        <time datetime="conversation.created_at" class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500 dark:text-slate-400">
-          <%= conversation.created_at %>
-        </time>
-      </div>
-      <div class="mt-1">
-        <p class="line-clamp-2 text-sm text-gray-600 dark:text-slate-200">
-          <% if conversation.messages.count > 1 %>
-            <%= conversation.messages[1]&.content[0..128] %>...
-          <% end %>
-        </p>
-      </div>
-    </li>
-  <% end %>
-</ul>
+        <div class="mt-1">
+          <p class="line-clamp-2 text-sm text-gray-600 dark:text-slate-200">
+            <% if conversation.messages.count > 1 %>
+              <%= conversation.messages[1]&.content[0..128] %>...
+            <% end %>
+          </p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</main>

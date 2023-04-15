@@ -25,7 +25,7 @@
 
         requestAssistantMessage(event) {
           const usertFormSubmited = event.detail.formSubmission.formElement === this.userFormTarget;
-          const successfulSubmit = event.detail.formSubmission.result.success;
+          const successfulSubmit = event.detail.formSubmission.result?.success;
           if (usertFormSubmited && successfulSubmit) {
             this.assistantFormTarget.requestSubmit();
           }
@@ -40,16 +40,22 @@
     <header class="h-10">
       <nav class="flex justify-between items-center bg-white dark:bg-slate-900 space-x-4">
         <a class="bg-gray-800 text-white px-3 py-2" href="/">Home</a>
-        <form action="/conversations" method="post">
+        <form action="/conversations" method="post" id="new-conversation">
           <input class="bg-green-600 dark:bg-green-800 text-white px-3 py-2 cursor-pointer" type="submit" value="Nouvelle conversation">
         </form>
       </nav>
     </header>
 
-    <main
-      class="bg-gray-100 dark:bg-slate-950 mx-auto max-w-5xl pb-10 h-full flex flex-col justify-between pb-10"
-    >
-      <%= yield %>
-    </main>
+    <%= yield %>
+
+    <script>
+      // Ctrl + space to start a new conversation
+      document.addEventListener("keydown", function(event) {
+        if (event.ctrlKey && event.keyCode == 32) {
+          event.preventDefault();
+          document.getElementById("new-conversation").requestSubmit();
+        }
+      });
+    </script>
   </body>
 </html>
