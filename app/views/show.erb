@@ -1,19 +1,7 @@
 <main class="bg-gray-50 dark:bg-slate-950 h-full flex flex-col justify-end p-4 pb-10 overflow-hidden">
   <ul role="list" class=" flex flex-col-reverse overflow-y-auto" id="messages">
     <% @conversation.messages[1..].reverse.each do |message| %>
-      <li class=" hover:bg-gray-100 py-4 border-b border-b-gray-300 dark:border-b-slate-800" id="message_<%= message.id %>">
-        <div class="sm:flex mb-4">
-          <div class="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
-            <img class="inline-block h-14 w-14 rounded-full shadow-sm" src="/images/<%= message.role %>.png" alt="">
-          </div>
-          <div class="w-full">
-            <h4 class="text-lg font-bold"><%= message.role %></h4>
-            <div class="mt-1 text-lg overflow-x-auto">
-              <%= message.content_html %>
-            </div>
-          </div>
-        </div>
-      </li>
+      <%= erb :message, locals: { message: message } %>
     <% end %>
   </ul>
 
