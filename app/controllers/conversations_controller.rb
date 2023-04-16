@@ -42,5 +42,5 @@ post "/conversations/:id/assistant_message" do
   @message = conversation.messages.last
 
   response.headers["Content-Type"] = "text/vnd.turbo-stream.html; charset=utf-8"
-  erb :message_stream, layout: false
+  erb :assistant_answer_stream, layout: false
 end

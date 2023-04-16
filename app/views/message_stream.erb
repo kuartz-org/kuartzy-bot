@@ -1,17 +1,14 @@
 <turbo-stream action="prepend" target="messages">
   <template>
-    <li class="py-4" id="message_<%= @message.id %>">
-      <div class="sm:flex mb-4">
-        <div class="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
-          <img src="/images/<%= @message.role %>.png" alt="" class="h-12 w-12">
-        </div>
-        <div class="w-full">
-          <h4 class="text-lg font-bold"><%= @message.role %></h4>
-          <div class="mt-1 text-lg">
-            <%= @message.content_html %>
-          </div>
-        </div>
+    <%# assistant message's loader %>
+    <li id="assistant-answer" class=" hover:bg-gray-100 py-4 border-b border-b-gray-300 dark:border-b-slate-800">
+      <div class="flex justify-center items-center">
+        <div class="animate-spin inline-block w-8 h-8 border-2 border-r-transparent rounded-full"></div>
+        <span class="sr-only">Loading...</span>
       </div>
     </li>
+
+    <%# user's message %>
+    <%= erb :message, locals: { message: @message } %>
   </template>
 </turbo-stream>
