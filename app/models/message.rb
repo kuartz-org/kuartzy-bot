@@ -35,6 +35,15 @@ class Message < Record
     markdown.render(content.gsub("```", "\n```"))
   end
 
+  def human_role
+    roles = {
+      user: "You",
+      assistant: "Kuartzy"
+    }
+
+    roles[role.to_sym]
+  end
+
   private
 
   def attributes
