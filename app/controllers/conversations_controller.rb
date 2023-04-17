@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+include ActionView::Helpers::DateHelper
+
 get "/conversations" do
   @conversations = Conversation.all
 
@@ -18,6 +20,7 @@ post "/conversations" do
 end
 
 get "/conversations/:id" do
+  @conversations = Conversation.all
   @conversation = Conversation.find(params["id"])
 
   erb :show

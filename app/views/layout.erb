@@ -36,17 +36,28 @@
       import * as Turbo from "https://cdn.skypack.dev/@hotwired/turbo";
     </script>
   </head>
-  <body class="bg-white dark:bg-slate-900 h-screen overflow-hidden dark:text-gray-100">
-    <header class="h-10">
-      <nav class="flex justify-between items-center bg-white dark:bg-slate-900 space-x-4">
-        <a class="bg-gray-800 text-white px-3 py-2" href="/">Home</a>
+  <body class="flex bg-white dark:bg-slate-900 h-screen overflow-hidden dark:text-gray-100">
+    <aside class="w-80 h-full flex flex-col">
+      <header class="p-4 flex justify-between">
+        <a href="/"><h1 class="text-lg font-semibold">Kuartzy Bot</h1></a>
         <form action="/conversations" method="post" id="new-conversation">
-          <input class="bg-green-600 dark:bg-green-800 text-white px-3 py-2 cursor-pointer" type="submit" value="Nouvelle conversation">
+          <button class="bg-green-600 dark:bg-green-800 text-white px-3 py-2 cursor-pointer rounded" type="submit">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+          </button>
         </form>
-      </nav>
-    </header>
+      </header>
+      <ul role="list" class="bg-gray-100 dark:bg-slate-950 flex flex-col flex-1 min-h-0 overflow-auto divide-y divide-gray-200 dark:divide-slate-800">
+        <% @conversations.reverse.each do |conversation| %>
+          <%= erb :conversation, locals: { conversation: conversation } %>
+        <% end %>
+      </ul>
+    </aside>
 
-    <%= yield %>
+    <div class="w-full">
+      <%= yield %>
+    </div>
 
     <script>
       // Ctrl + space to start a new conversation

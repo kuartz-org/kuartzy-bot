@@ -1,6 +1,7 @@
 CREATE TABLE conversations (
   `id` INTEGER PRIMARY KEY AUTOINCREMENT,
   `model` VARCHAR,
+  `topic` VARCHAR,
   `created_at` DATE
 );
 

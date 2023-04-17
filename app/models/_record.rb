@@ -68,5 +68,12 @@ class Record
   end
 
   def update
+    query = <<~SQL.chomp
+      UPDATE #{self.class}s SET #{attributes.map { |attr| "#{attr}=?" }.join(',')}
+      WHERE id=?
+    SQL
+
+    DB.execute(query, *attributes.map { |attr| public_send(attr) }, id)
+    self
   end
 end

@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
+
 require "dotenv/load"
 require "sinatra"
 require "redcarpet"
 require "openai"
 require "rouge"
 require "rouge/plugins/redcarpet"
+
+require "action_view"
+require "action_view/helpers"
 
 require_relative "db/config.rb"
 
