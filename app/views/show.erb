@@ -1,11 +1,11 @@
-<main class="bg-gray-50 dark:bg-slate-950 h-full flex flex-col justify-end p-4 overflow-hidden">
+<main class="bg-gray-50 dark:bg-slate-900 h-full flex flex-col justify-end p-4 overflow-hidden">
   <ul role="list" class=" flex flex-col-reverse overflow-y-auto" id="messages">
     <% @conversation.messages[1..].reverse.each do |message| %>
       <%= erb :message, locals: { message: message } %>
     <% end %>
   </ul>
 
-  <section class="sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-950">
+  <section class="sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-900">
     <div data-controller="chat-textarea">
       <form
         action="/conversations/<%= @conversation.id %>/messages"
