@@ -1,0 +1,47 @@
+/* Keyword colors */
+.k { color: #f07178; } /* Keywords */
+.kc { color: #71b6f1; } /* Constants */
+.kd { color: #bb9af7; } /* Declarations */
+.kn { color: #bb9af7; } /* Namespaces */
+.kp { color: #f07178; } /* Pseudo-keywords */
+.kr { color: #f07178; } /* Reserved keywords */
+.kt { color: #6bd25b; } /* Type keywords */
+
+/* Literal colors */
+.l { color: #71b6f1; } /* Literals */
+.ld { color: #bb9af7; } /* Date literals */
+
+/* Name colors */
+.n { color: #c9d1d9; } /* Identifiers */
+.na { color: #71e2e2; } /* Attributes */
+.nb { color: #71b6f1; } /* Built-ins */
+.nc { color: #fca965; } /* Classes */
+.no { color: #71b6f1; } /* Constants */
+.nd { color: #ffcd67; } /* Decorators */
+.ni { color: #c9d1d9; } /* Entities */
+.ne { color: #f07178; } /* Exceptions */
+.nf { color: #fca965; } /* Functions */
+.nl { color: #c9d1d9; } /* Labels */
+.nn { color: #fca965; } /* Namespaces */
+.nt { color: #6bd25b; } /* Tags */
+.nv { color: #c9d1d9; } /* Variables */
+
+/* Operator and punctuation colors */
+.o,
+.p { color: #c9d1d9; } /* Operators and punctuation */
+
+/* Comment colors */
+.c,
+.cm,
+.cp,
+.c1,
+.cs { color: #8b959e; } /* Comments */
+
+/* Error colors */
+.err { color: #ff677d; } /* Errors */
+
+/* Unknown or unrecognized token colors */
+.x { color: #c9d1d9; } /* Unknown or unrecognized tokens */
+
+/* Whitespace colors */
+.w { color: #585f68; } /* Whitespace */
