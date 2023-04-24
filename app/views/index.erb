@@ -1,16 +1,27 @@
 <main class="bg-gray-50 dark:bg-slate-900 flex flex-col justify-center items-center h-full">
   <section class="max-w-lg text-gray-700 dark:text-gray-400 text-lg">
     <img class="h-40 w-40 rounded-full mx-auto" src="/images/assistant.png" alt="">
-    <p class="mt-8 tracking-wide">Bonjour à tous ! Je suis Kuartzy, votre nouvel assistant virtuel !</p>
-    <p class="mt-8 tracking-wide">
-      À travers cette application de chat, je suis votre compagnon fidèle qui
-      vous aidera à mieux gérer votre temps au quotidien.
-    </p>
-    <p class="mt-8 tracking-wide">
-      Grâce à moi, vous pourrez rester organisé et productif tout en vous
-      amusant. Alors, n'hésitez pas à me poser toutes vos questions,
-      je suis là pour vous aider !
-    </p>
+    <p class="mt-8 tracking-wide">Bonjour ! Je suis Kuartzy, votre nouvel assistant virtuel !</p>
+    <div class="mt-8 border border-gray-500 dark:border-slate-600 rounded text-sm font-mono">
+      <% @models.each do |model, availability| %>
+        <div class="flex items-center justify-between px-4 py-2">
+          <p><%= model %></p>
+          <p>
+            <% if availability %>
+              <!-- checkmark -->
+              <svg class="w-5 h-5 text-green-600 dark:text-green-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            <% else %>
+              <!-- cross -->
+              <svg class="w-5 h-5 text-red-600 dark:text-red-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            <% end %>
+          </p>
+        </div>
+      <% end %>
+    </div>
   </section>
 
   <section class="mt-8">

@@ -1,11 +1,11 @@
-<li class=" hover:bg-gray-100 dark:hover:bg-slate-800 py-4 border-b border-b-gray-300 dark:border-b-slate-800" id="message_<%= message.id %>">
+<li class="py-4 border-b border-b-gray-300 dark:border-b-slate-800" id="message_<%= message.id %>">
   <div class="sm:flex mb-4">
     <div class="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
       <img class="inline-block h-14 w-14 rounded-full m-1" src="/images/<%= message.role %>.png" alt="">
     </div>
     <div class="w-full">
       <h4 class="text-md font-bold"><%= message.human_role %></h4>
-      <div class="mt-1 overflow-x-auto prose dark:text-white dark:prose-code:text-white dark:prose-code:bg-gray-800">
+      <div class="mt-1 overflow-x-auto max-w-screen-md prose dark:text-white dark:prose-code:text-white dark:prose-headings:text-white">
         <%= message.content_html %>
       </div>
     </div>
