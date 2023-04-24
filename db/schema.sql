@@ -11,5 +11,6 @@ CREATE TABLE messages (
   `role` VARCHAR,
   `content` VARCHAR,
   `conversation_id` INTEGER,
+  `tokens` INTEGER,
   `created_at` DATE
 );

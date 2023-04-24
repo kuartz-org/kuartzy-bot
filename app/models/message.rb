@@ -8,13 +8,14 @@ class MarkdownRender < Redcarpet::Render::HTML
 end
 
 class Message < Record
-  attr_reader :role, :content, :conversation_id
+  attr_reader :role, :content, :conversation_id, :tokens
 
   def initialize(attributes)
     super
     @role = attributes[:role]
     @content = attributes[:content]
     @conversation_id = attributes[:conversation_id]
+    @tokens = attributes[:tokens]
   end
 
   def conversation
@@ -47,6 +48,6 @@ class Message < Record
   private
 
   def attributes
-    %w[role content conversation_id]
+    %w[role content conversation_id tokens]
   end
 end

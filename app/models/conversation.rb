@@ -50,7 +50,7 @@ class Conversation < Record
   end
 
   def message_attributes_from_open_ai_client(response)
-    response["choices"].first["message"].transform_keys(&:to_sym)
+    response["choices"].first["message"].transform_keys(&:to_sym).merge(tokens: token_from_response(response))
   end
 
   def token_from_response(response)
