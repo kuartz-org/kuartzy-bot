@@ -5,6 +5,8 @@ include ActionView::Helpers::DateHelper
 get "/conversations" do
   @conversations = Conversation.all
 
+  @models = Conversation.models
+
   erb :index
 end
 

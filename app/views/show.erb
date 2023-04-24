@@ -5,31 +5,46 @@
     <% end %>
   </ul>
 
-  <section class="sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-900">
+  <section class="mt-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-900">
     <div data-controller="chat-textarea">
       <form
         action="/conversations/<%= @conversation.id %>/messages"
         method="post"
-        class="mt-3 mb-4 relative"
+        class="relative"
         data-chat-textarea-target="userForm"
-        data-action="turbo:submit-end@document->chat-textarea#requestAssistantMessage"
-      >
+        data-action="turbo:submit-end@document->chat-textarea#requestAssistantMessage">
         <input type="hidden" name="content" data-chat-textarea-target="input">
         <div
-          class="pl-14 w-full min-h-[3rem] bg-gray-200 dark:bg-slate-800 p-1 rounded before:content-['Message…'] before:p-1 before:text-gray-500 focus:before:content-[''] focus:outline-none"
+          class="pl-14 py-2 w-full bg-gray-200 dark:bg-slate-800 p-1 rounded before:content-['Message…'] before:text-gray-500 focus:before:content-[''] focus:outline-none"
           contenteditable="true"
           data-chat-textarea-target="textarea"
           data-action="keydown.enter->chat-textarea#submit"
-          autofocus
-        >
+          autofocus>
         </div>
       </form>
       <form
         action="/conversations/<%= @conversation.id %>/assistant_message"
         method="post"
-        data-chat-textarea-target="assistantForm"
-      >
+        data-chat-textarea-target="assistantForm">
       </form>
     </div>
+    <footer class="flex space-x-4 mt-2 text-sm text-gray-500 dark:text-slate-600">
+      <p class="flex items-end space-x-1">
+        <!-- archive icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+        </svg>
+
+        <span><%= @conversation.model %></span>
+      </p>
+      <p class="flex items-end space-x-1">
+        <!-- dollar icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+
+        <span><%= @conversation.total_tokens %></span>
+      </p>
+    </footer>
   </section>
 </main>
