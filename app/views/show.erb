@@ -5,7 +5,7 @@
     <% end %>
   </ul>
 
-  <section class="mt-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-900">
+  <section class="mt-4 bg-gray-50 dark:bg-slate-900">
     <div data-controller="chat-textarea">
       <form
         action="/conversations/<%= @conversation.id %>/messages"
@@ -14,15 +14,26 @@
         data-chat-textarea-target="userForm"
         data-action="turbo:submit-end@document->chat-textarea#requestAssistantMessage">
         <input type="hidden" name="content" data-chat-textarea-target="input">
-        <div
-          class="pl-14 py-2 w-full bg-gray-200 dark:bg-slate-800 p-1 rounded before:content-['Message…'] before:text-gray-500 focus:before:content-[''] focus:outline-none"
-          contenteditable="true"
-          data-chat-textarea-target="textarea"
-          data-action="keydown.enter->chat-textarea#submit"
-          autofocus>
+
+        <div class="flex items-start py-2 w-full bg-gray-200 dark:bg-slate-800 p-1 rounded ">
+
+          <div class="w-12"></div>
+          <%# <select form="assistant-form" name="requested-type" id="requested-type" class="inline-block rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="chat">Chat</option>
+            <option value="image">Image</option>
+          </select> %>
+
+          <div
+            class="pl-4 block focus:outline-none grow"
+            contenteditable="true"
+            data-chat-textarea-target="textarea"
+            data-action="keydown.enter->chat-textarea#submit"
+            autofocus>
+          </div>
         </div>
       </form>
       <form
+        id="assistant-form"
         action="/conversations/<%= @conversation.id %>/assistant_message"
         method="post"
         data-chat-textarea-target="assistantForm">
@@ -42,8 +53,6 @@
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" />
         </svg>
-
-
         <span><%= @conversation.total_tokens %></span>
       </p>
     </footer>

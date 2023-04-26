@@ -13,6 +13,7 @@ require "action_view/helpers"
 
 require_relative "db/config.rb"
 
+Dir["./app/clients/*_client.rb"].sort.each { |file| require file }
 Dir["./app/models/*.rb"].sort.each { |file| require file }
 Dir["./app/controllers/*_controller.rb"].sort.each { |file| require file }
 

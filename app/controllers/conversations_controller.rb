@@ -7,6 +7,8 @@ get "/conversations" do
 
   @models = Conversation.models
 
+  @openai_usage = OpenAIClient.new.usage
+
   erb :index
 end
 
@@ -30,6 +32,7 @@ end
 
 post "/conversations/:id/messages" do
   conversation = Conversation.find(params["id"])
+
   @message = Message.create(
     conversation_id: conversation.id,
     role: "user",
@@ -43,7 +46,13 @@ end
 
 post "/conversations/:id/assistant_message" do
   conversation = Conversation.find(params["id"])
-  conversation.request_assistant_message!
+
+  if params["requested-type"] == "image"
+    conversation.request_image!
+  else
+    conversation.request_assistant_message!
+  end
+
   @message = conversation.messages.last
 
   response.headers["Content-Type"] = "text/vnd.turbo-stream.html; charset=utf-8"

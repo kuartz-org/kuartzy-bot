@@ -24,9 +24,13 @@ class Conversation < Record
     response = open_ai_client.chat(
       parameters: {
         model: model,
-        messages: messages.map(&:to_h)
+        messages: non_artist_messages.map(&:to_h)
       }
     )
+
+    pp response
+
+    return error(response) if response.code != 200
 
     messages << Message.create(
       conversation_id: id,
@@ -39,7 +43,38 @@ class Conversation < Record
     save
   end
 
+  def request_image!
+    response = open_ai_client.images.generate(
+      parameters: {
+        prompt: messages.last.content,
+        size: "256x256"
+      }
+    )
+
+    return error(response) if response.code != 200
+
+    image_url = response.dig("data", 0, "url")
+
+    messages << Message.create(
+      role: "artist",
+      conversation_id: id,
+      content: "<img src=\"#{image_url}\" alt=\"#{messages.last.content}\" title=\"#{messages.last.content}\"/>",
+    )
+  end
+
   private
+
+  def non_artist_messages
+    messages.reject { |message| message.role == "artist" }
+  end
+
+  def error(response)
+    messages << Message.create(
+      role: "system",
+      conversation_id: id,
+      content: response.body
+    )
+  end
 
   def attributes
     %w[model topic total_tokens]
@@ -61,7 +96,7 @@ class Conversation < Record
     response = open_ai_client.chat(
       parameters: {
         model: model,
-        messages: messages.map(&:to_h) + [{
+        messages: non_artist_messages.map(&:to_h) + [{
           role: "user",
           content: "What is the summary of this conversation in maximum 5 words?"
         }]

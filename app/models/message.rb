@@ -39,7 +39,9 @@ class Message < Record
   def human_role
     roles = {
       user: "You",
-      assistant: "Kuartzy"
+      assistant: "Kuartzy",
+      system: "System",
+      artist: "Michelangelo"
     }
 
     roles[role.to_sym]
