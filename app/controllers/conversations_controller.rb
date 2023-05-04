@@ -58,3 +58,11 @@ post "/conversations/:id/assistant_message" do
   response.headers["Content-Type"] = "text/vnd.turbo-stream.html; charset=utf-8"
   erb :assistant_answer_stream, layout: false
 end
+
+delete "/conversations/:id" do
+  @conversation = Conversation.find(params["id"])
+  @conversation.destroy
+
+  response.headers["Content-Type"] = "text/vnd.turbo-stream.html; charset=utf-8"
+  erb :delete_conversation_stream, layout: false
+end

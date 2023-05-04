@@ -1,6 +1,6 @@
-<li class="relative <%= conversation.id == @conversation&.id ? 'bg-gray-200 dark:bg-slate-950' : 'bg-gray-100 dark:bg-slate-800' %> px-4 py-5 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-600 hover:bg-gray-50 dark:hover:bg-slate-900">
+<li id="conversation_<%= conversation.id %>" class="<%= conversation.id == @conversation&.id ? 'bg-gray-200 dark:bg-slate-950' : 'bg-gray-100 dark:bg-slate-800' %> px-4 py-5 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-600 hover:bg-gray-50 dark:hover:bg-slate-900">
   <div class="flex justify-between space-x-3">
-    <div class="min-w-0 flex-1">
+    <div class="relative min-w-0 flex-1">
       <a href="/conversations/<%= conversation.id%>" class="block focus:outline-none">
         <span class="absolute inset-0" aria-hidden="true"></span>
         <% if conversation.topic.to_s.empty? %>
@@ -11,8 +11,12 @@
         <p class="text-sm text-gray-500 dark:text-slate-400"><%= conversation.messages.count %> message<%= "s" if conversation.messages.count > 1 %></p>
       </a>
     </div>
-    <time datetime="conversation.created_at" class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500 dark:text-slate-400">
-      <%= time_ago_in_words conversation.created_at %>
-    </time>
+    <form action="/conversations/<%= conversation.id%>" method="delete">
+      <button type="submit">
+        <svg class="w-5 h-5 text-gray-400 dark:text-slate-400 hover:text-gray-500 dark:hover:text-slate-300" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 01-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z"/>
+        </svg>
+      </button>
+    </form>
   </div>
 </li>

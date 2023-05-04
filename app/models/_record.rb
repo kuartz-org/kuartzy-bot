@@ -76,4 +76,12 @@ class Record
     DB.execute(query, *attributes.map { |attr| public_send(attr) }, id)
     self
   end
+
+  def destroy
+    query = <<~SQL.chomp
+      DELETE FROM #{self.class}s WHERE id=?
+    SQL
+
+    DB.execute(query, id)
+  end
 end

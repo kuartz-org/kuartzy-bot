@@ -28,8 +28,6 @@ class Conversation < Record
       }
     )
 
-    pp response
-
     return error(response) if response.code != 200
 
     messages << Message.create(

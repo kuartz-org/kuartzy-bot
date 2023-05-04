@@ -22,6 +22,6 @@ class OpenAIClient
       start_date: Time.new(t.year, t.month, 1).strftime("%Y-%m-%d")
     }))
 
-    (response["total_usage"].to_f / 100).round(2)
+    format("%.2f", (response["total_usage"].to_f / 100))
   end
 end
